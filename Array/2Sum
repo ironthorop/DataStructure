@@ -1,0 +1,45 @@
+class twoSum {
+    public static void main(String[] args) {
+
+        // Initialize an array of integers
+        int[] arr = { 1, 2, 3, 5, 6, 7, 8, 9 };
+
+        // The target sum we are searching for
+        int target = 10;
+
+        // Call the targetFinder method to find the indices of any pair of numbers in
+        // the array that add up to the target
+        int[] result = targetFinder(target, arr);
+
+        // If result is null, then a pair that adds up to the target was not found
+        if (result == null) {
+            System.out.println("Target sum not found");
+        }
+
+        // Otherwise, print the indices of the pair
+        else {
+            System.out.println("Target sum found at indices " + result[0] + " and " + result[1]);
+        }
+
+    }
+
+    // This method checks every pair of numbers in the array to see if they add up
+    // to the target.
+    // If such a pair is found, it returns its indices.
+    public static int[] targetFinder(int target, int arr[]) {
+
+        // Loop through all possible pairs of numbers in the array
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i; j < arr.length; j++) {
+
+                // Check if this pair of numbers adds up to the target
+                if (arr[i] == (target - arr[j])) {
+                    return new int[] { i, j };
+                }
+            }
+        }
+
+        // If no pair that adds up to the target is found, return null
+        return null;
+    }
+}
