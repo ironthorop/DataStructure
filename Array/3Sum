@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class ThreeSum {
+    public static void main(String[] args) {
+        int nums[] = { -1, 0, 1, 2, -1, -4 };
+        System.out.println(threeSum(nums));
+    }
+
+    // This method finds all unique triplets in the array whose sum is zero.
+    public static List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums); // Sort the array to simplify duplicate removal
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i == 0 || nums[i] != nums[i - 1]) { // Skip duplicates
+                int j = i + 1, k = nums.length - 1;
+                while (j < k) { // Two-pointer approach
+                    int sum = nums[i] + nums[j] + nums[k];
+                    if (sum == 0) {
+                        result.add(Arrays.asList(nums[i], nums[j], nums[k])); // Found a match
+                        j++; // Move left index to the right
+                        k--; // Move right index to the left
+                        while (j < k && nums[j] == nums[j - 1])
+                            j++; // Skip duplicates
+                        while (j < k && nums[k] == nums[k + 1])
+                            k--; // Skip duplicates
+                    } else if (sum < 0) {
+                        j++; // Sum is too small, move left index to the right
+                    } else {
+                        k--; // Sum is too large, move right index to the left
+                    }
+                }
+            }
+        }
+        return result; // Return list of unique triplets that sum to zero
+    }
+}
