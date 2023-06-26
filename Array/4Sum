@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class fourSum {
+    public static void main(String[] args) {
+        int arr[] = { 1, 0, -1, 0, -2, 2 };
+        int target = 0;
+
+        // Call the method FourSum passing target and arr as parameters
+        System.out.println(FourSum(target, arr));
+    }
+
+    public static List<List<Integer>> FourSum(int target, int[] arr) {
+        Arrays.sort(arr); // sorting the input array
+
+        Set<List<Integer>> set = new HashSet<>(); // using a hashset to avoid duplicates
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                // Using two pointers to find pairs of elements whose sum is equal to target
+                int start = j + 1;
+                int end = arr.length - 1;
+
+                while (start < end) {
+                    long sum = (long) arr[i] + (long) arr[j] + (long) arr[start] + (long) arr[end];
+
+                    if (sum == target) {
+                        // Add the found quadruplets to the set
+                        set.add(new ArrayList<>(Arrays.asList(arr[i], arr[j], arr[start], arr[end])));
+
+                        start++;
+                        end--;
+                    } else if (((long) arr[i] + (long) arr[j] + (long) arr[start] + (long) arr[end]) > target) {
+                        end--;
+                    } else {
+                        start++;
+                    }
+                }
+            }
+        }
+        return new ArrayList<>(set); // return the list of unique quadruplets
+    }
+}
