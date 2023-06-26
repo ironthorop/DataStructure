@@ -1,0 +1,47 @@
+// This is a class named RemoveElement
+public class RemoveElement {
+
+    // This is the main method that will execute when we run this program
+    public static void main(String[] args) {
+        
+        // Create an array called arr with 8 integers including duplicates of value 2
+        int arr[] = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+        
+        // Declare and initialize integer variable "element" with value 2
+        int element = 2;
+        
+        // Call static method "removeElement", passing in the element and array as arguments
+        System.out.println(removeElement(element, arr));
+    }
+
+    // Static method "removeElement" which returns an integer and takes in integer "element" and integer array "arr"
+    public static int removeElement(int element, int[] arr) {
+        
+        // Initialize integer variable "j" to 0
+        int j = 0;
+        
+        // For loop to iterate through every element in the "arr" array 
+        for (int i = 0; i < arr.length; i++) {
+            
+            // If the element at index "i" is not equal to "element", then set the element at index "j" to the element at index "i" and increment "j"
+            if (arr[i] != element) {
+                arr[j] = arr[i];
+                j++;
+            }
+        }
+        
+        // Print statement to indicate that we are printing the array elements after removing the specified element
+        System.out.print("After remove the element : ");
+        
+        // For loop to print all the elements in the modified "arr" array up to the value of "j"
+        for (int i = 0; i < j; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+        
+        // Print statement to indicate that we are printing the number of elements in the modified "arr" array
+        System.out.print("\nNumber of elements : ");
+        
+        // Return the value of "j", which represents the new length of the "arr" array after removing the specified element
+        return j;
+    }
+}
