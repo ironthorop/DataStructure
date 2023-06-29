@@ -1,6 +1,6 @@
 # DataStructure
 
-Leetcode, coding ninja,GFF solutions in java ........💻
+Leetcode, coding ninja,GFG solutions in java ........💻
 
 
 Stay tune.......
